@@ -1,5 +1,5 @@
 from aws_cdk import (
-    Stack,
+    NestedStack,
     CfnOutput,
     aws_ec2 as ec2,
     # aws_rds as rds,
@@ -8,14 +8,10 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-class MySampleAppStackL2(Stack):
+class MySampleAppStackL2(NestedStack):
 
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, my_vpc: ec2.Vpc, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
-
-        # 1.vpc 생성
-        my_vpc = ec2.Vpc(self, 'MyVPC',
-                         nat_gateways=0)
         
         web_server = ec2.Instance(self, 'WebServer',
                                   machine_image=ec2.MachineImage.latest_amazon_linux2(),
