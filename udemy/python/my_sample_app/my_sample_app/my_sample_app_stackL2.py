@@ -1,5 +1,6 @@
 from aws_cdk import (
     NestedStack,
+    Tags,
     CfnOutput,
     aws_ec2 as ec2,
     # aws_rds as rds,
@@ -54,6 +55,16 @@ class MySampleAppStackL2(NestedStack):
 
         web_server.add_user_data('service nginx start')
 
+
+        # Tagging Construct
+        Tags.of(web_server).add('category', 'web server')
+        Tags.of(web_server).add('subcategory', 'primary',
+                                include_resource_types=['AWS::EC2::Instance'])
+        Tags.of(web_server).add('subcategory', 'side',
+                                exclude_resource_types=['AWS::EC2::Instance'],
+                                priority=300)
+        
+        Tags.of(web_server).remove('subcategory')
         
         # # DB Instance configuration
         # db_instance = rds.DatabaseInstance(self, 'DbInstance',
