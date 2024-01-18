@@ -41,7 +41,7 @@ class MySampleAppStackL2(NestedStack):
         web_server.connections.allow_from_any_ipv4(ec2.Port.tcp(80), 'Allow HTTP Access from the Internet')
 
         # for ssh access를 통해서 db 연결 테스트를 위해 사용
-        web_server.connections.allow_from_any_ipv4(ec2.Port.tcp(22), 'Allow SSH Access from the Internet')
+        # web_server.connections.allow_from_any_ipv4(ec2.Port.tcp(22), 'Allow SSH Access from the Internet')
 
         # Deploying a web page to the web server
         web_page_asset = s3_assets.Asset(self, 'WebPageAsset',

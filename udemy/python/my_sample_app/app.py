@@ -5,7 +5,7 @@ import aws_cdk as cdk
 
 from my_sample_app.my_sample_app_stackL2 import MySampleAppStackL2
 from my_sample_app.network_stack import NetworkStack
-from my_sample_app.aspects import EC2InstanceTypeChecker
+from my_sample_app.aspects import ( EC2InstanceTypeChecker, SSHAnywhereChecker)
 
 app = cdk.App()
 
@@ -16,6 +16,7 @@ application_stack = MySampleAppStackL2(root_stack, "MySampleAppStackL2",
 
 # Aspect attachement
 cdk.Aspects.of(root_stack).add(EC2InstanceTypeChecker())
+cdk.Aspects.of(root_stack).add(SSHAnywhereChecker())
 
 # Stack-level tagging
 cdk.Tags.of(newtwork_stack).add('category', 'network')
