@@ -1,2 +1,5 @@
-GET https://ke7whntxe0.execute-api.ap-northeast-2.amazonaws.com/prod/spaces
+GET https://f86grosiyf.execute-api.ap-northeast-2.amazonaws.com/prod/spaces
+###
+
+POST  https://f86grosiyf.execute-api.ap-northeast-2.amazonaws.com/prod/spaces
 ###
