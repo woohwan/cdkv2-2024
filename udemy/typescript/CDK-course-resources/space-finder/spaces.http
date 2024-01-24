@@ -2,4 +2,9 @@ GET https://f86grosiyf.execute-api.ap-northeast-2.amazonaws.com/prod/spaces
 ###
 
 POST  https://f86grosiyf.execute-api.ap-northeast-2.amazonaws.com/prod/spaces
+Content-Type: application/json
+
+{
+    "location": "Paris"
+}
 ###
